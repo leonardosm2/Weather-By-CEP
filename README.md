@@ -8,7 +8,7 @@ Esta aplicação permite consultar a temperatura atual em Celsius, Fahrenheit, K
     curl http://weather-by-cep-140877469694.southamerica-east1.run.app/temp?CEP=07085310
     ```
     
-* Se preferir, use o modelo disponível em `api/temp_cloudrun.http`.
+* Se preferir, use o modelo disponível em `api/temp_cloudrun.http` para consumir o seviço.
 
 ## Como executar a aplicação local
 1. Certifique-se de ter o Docker instalado.
