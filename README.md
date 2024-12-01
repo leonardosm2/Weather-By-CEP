@@ -10,7 +10,7 @@ Esta aplicação permite consultar a temperatura atual em graus Celsius, Fahrenh
     
 * Se preferir, use o modelo disponível em `api/temp_cloudrun.http` para consumir o seviço.
 
-## Como executar a aplicação local
+## Executando a aplicação em ambiente local
 1. Certifique-se de ter o Docker instalado.
 2. Suba os containers necessários executando o comando:
     ```bash
