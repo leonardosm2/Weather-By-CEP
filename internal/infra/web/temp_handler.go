@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"net/http"
 
+	"github.com/leonardosm2/Weather-By-CEP/internal/adapters/api"
 	"github.com/leonardosm2/Weather-By-CEP/internal/entity"
 	"github.com/leonardosm2/Weather-By-CEP/internal/usecase"
 )
@@ -29,7 +30,13 @@ func (h *WebTempHandler) Get(w http.ResponseWriter, r *http.Request) {
 	getTemp := usecase.NewGetTempUseCase(h.LocationClient, h.WeatherClient)
 	output, err := getTemp.Execute(input)
 	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
+		if err == entity.ErrInvalidZipcode {
+			http.Error(w, err.Error(), http.StatusUnprocessableEntity)
+		} else if err == api.ErrNotFoundZipcode {
+			http.Error(w, err.Error(), http.StatusNotFound)
+		} else {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+		}
 		return
 	}
 	err = json.NewEncoder(w).Encode(output)

@@ -2,6 +2,7 @@ package api
 
 import (
 	"encoding/json"
+	"errors"
 	"io"
 	"net/http"
 	"strings"
@@ -9,12 +10,15 @@ import (
 	"github.com/leonardosm2/Weather-By-CEP/internal/entity"
 )
 
+var ErrNotFoundZipcode = errors.New("can not find zipcode")
+
 type LocationClient struct {
 	BaseURL string
 }
 
 type LocationResponse struct {
 	Localidade string `json:"localidade"`
+	Erro       string `json:"erro"`
 }
 
 func NewLocationClient(url string) *LocationClient {
@@ -44,6 +48,10 @@ func (l *LocationClient) GetLocation(cep entity.CEP) (string, error) {
 	err = json.Unmarshal(body, &location)
 	if err != nil {
 		return "", err
+	}
+
+	if location.Erro == "true" {
+		return "", ErrNotFoundZipcode
 	}
 
 	return location.Localidade, nil
