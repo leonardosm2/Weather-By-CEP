@@ -3,13 +3,12 @@
 Esta aplicação permite consultar a temperatura atual em Celsius, Fahrenheit, Kelvin, pesquisando por CEP em um endpoint **REST**.
 
 ## Executando a aplicação na nuvem
-O serviço está disponível na nuvem, no host `weather-by-cep-140877469694.southamerica-east1.run.app` e endpoint `/temp`. Consulte pelo curl abaixo (ajustar o CEP):
-
+* O serviço está disponível na nuvem, no host `weather-by-cep-140877469694.southamerica-east1.run.app` e endpoint `/temp`. Consulte pelo curl abaixo (ajustar o CEP):
     ```bash
     curl http://weather-by-cep-140877469694.southamerica-east1.run.app/temp?CEP=07085310
     ```
     
-Se preferir, use o modelo disponível em `api/temp_cloudrun.http`.
+* Se preferir, use o modelo disponível em `api/temp_cloudrun.http`.
 
 ## Como executar a aplicação local
 1. Certifique-se de ter o Docker instalado.
