@@ -7,7 +7,6 @@ O serviço está disponível na nuvem, no host `weather-by-cep-140877469694.sout
     ```bash
     curl http://weather-by-cep-140877469694.southamerica-east1.run.app/temp?CEP=07085310
     ```
-
 Se preferir, use o modelo disponível em `api/temp_cloudrun.http`.
 
 ## Como executar a aplicação local
